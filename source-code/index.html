@@ -1,0 +1,178 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Teleperos everywhere!</title>
+	<meta name="description" content="">
+	<meta name="author" content="Adrian Vera Bencomo (@adrianveracom)">
+
+	 <!-- Mobile viewport optimization http://goo.gl/b9SaQ -->
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta http-equiv="cleartype" content="on">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+
+	<!-- PRODUCTION MODE -->
+	<link rel="stylesheet" href="assets/css/tlp.css">
+
+	<script type="text/javascript" charset="utf-8" src="cordova-1.9.0.js"></script>
+	<script type="text/javascript" charset="utf-8" src="assets/js/zepto.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+</head>
+<body>
+
+
+	<section>
+		<header>
+			<h1> Teleperos everywhere! </h1>
+		</header>
+
+		<article>
+			<button id="track">
+				Start tracking!
+			</button>
+			<button id="stopTrack">
+				Stop tracking!
+			</button>
+			<div id="map_canvas"></div>
+		</article>
+	</section>
+
+
+	<script type="text/javascript" charset="utf-8">
+
+	var App = (function(){
+
+
+		var _watchID = null;
+		var _history = [];
+
+		// Data
+		var _track = function(){
+
+			//Timeout 10 seconds, enableHighAccuracy important in android if is false don't work
+			var options = { maximumAge: 3000, timeout: 30000, enableHighAccuracy: true };
+			_watchID = navigator.geolocation.watchPosition(function(position){
+
+				//Save the result
+				_history.push({
+					latitude : position.coords.latitude,
+					longitude : position.coords.longitude,
+				});
+
+				_displayTrack();
+
+			}, _onError, options);
+
+		};
+
+
+		var _stopTrack = function(){
+
+			if (_watchID != null)
+			{
+				navigator.geolocation.clearWatch(_watchID);
+				_watchID = null;
+				GMaps.route(_history);
+			}
+		}
+
+
+		var _onError = function(error) {
+			alert('code: '    + error.code    + '\n' +
+			  'message: ' + error.message + '\n');
+		};
+
+
+		//View
+
+		var _displayTrack = function(){
+			console.log(_history);
+		}
+
+
+
+		// Events
+		var _subscribeEvents = function(){
+
+			//Start tracking
+			$('#track').on('click', _track);
+
+			//Stop tracking
+			$('#stopTrack').on('click', _stopTrack);
+		};
+
+
+
+
+		var init = function(){
+			_subscribeEvents();
+		};
+
+		return {
+			init : init
+		}
+
+	})();
+
+
+	var GMaps = (function(){
+
+		var route = function(_routeData){
+
+			var _routeCoordinates = [];
+
+			//NOTE: Remove this demo data to try into devices
+			var _routeData = [{latitude : 28.455792, longitude : -16.257944}, 
+			{latitude : 28.459092, longitude : -16.256778},
+			{latitude : 28.45648, longitude: -16.252694}];
+
+
+			for (var i = 0; i < _routeData.length; i++){
+				console.log(_routeData[i].latitude, _routeData[i].longitude);
+				_routeCoordinates.push(new google.maps.LatLng(_routeData[i].latitude, _routeData[i].longitude));
+			}
+
+			var myLatLng = new google.maps.LatLng(28.455792, -16.257944);
+
+			var mapOptions = {
+				zoom: 15,
+				center: myLatLng,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			};
+
+
+
+
+			var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+		
+			var flightPath = new google.maps.Polyline({
+				path: _routeCoordinates,
+				strokeColor: "#193a96",
+				strokeOpacity: 1.0,
+				strokeWeight: 2
+			});
+
+			flightPath.setMap(map);
+		};
+
+
+		return {
+			route : route
+		}
+
+
+	})();
+	
+
+	//document.addEventListener("deviceready", App.init, false);
+	App.init(); //NOTE: You should use the before line in phonegap
+
+	</script>
+  </body>
+</html>

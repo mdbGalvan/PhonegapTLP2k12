@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<title>Phonegap- @adrianveracom</title>
+
+	<link rel="stylesheet" href="assets/kinout/kinout-0.0.1.min.css">
+	<link rel="stylesheet" href="assets/kinout/kinout.bilbostack.fonts.css">
+	<link rel="stylesheet" href="assets/css/extend.css">
+	<link rel="stylesheet" href="assets/css/lungojs-icon-social.css">
+	<link href="assets/javascripts/rainbow/themes/blackboard.css" rel="stylesheet" type="text/css">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="assets/css/tlp.phonegap.css">
+</head>
+
+
+<body>
+	<div class="kinout">
+
+		<!-- Intro --> 
+
+		<section>
+			<h1 class="inline big">PHONEGAP</h1>
+			<h4 class="ghost"><mark>FROM HTML5 to MOBILE APP</mark></h4>
+		</section>
+
+		<section>
+			<h2 class="inline">Hi I'm the <mark>nerd</mark></h2>
+			<p>
+				<div class="column fifty">
+					<img src="assets/images/adrian.jpeg" class="bordered size_256 center">
+					<p>
+					<h4><mark>Adrian Vera</h4>
+					<h3 class="inline"><span class="icon social twitter"></span>adrianveracom</h3>
+					</div>
+					<div class="column fifty">
+					<ul>
+						<li class="percent30">code4play<mark>cofounder</mark></li>
+						<li class="percent10"> <mark>Developer at </mark> TheRanking.com</li>
+						<li class="percent50">BarleyJS<mark> author</mark></li>
+						<li class="percent10">Open Source <mark>lover</mark></li>
+						<li><mark>No conformist </mark> by nature</li>
+						
+					</ul>
+				</div>
+			</p>
+		</section>
+
+		<!-- What is -->
+		<section id="what">
+			
+			<section>
+				<h1 class="inline">PHONE... WHAT?</h1>
+			</section>
+			<section>
+				<div class="framed">
+					<blockquote class="inline percent100">PhoneGap is an HTML5 app platform that allows you to create native applications with web technologies.</blockquote>
+				</div>
+			</section>
+			<section id="posible">
+				<h1 class="inline">Is it possible?</h1>
+				<h2 class="ghost inline"> Where is the magic...?</h2>
+			</section>
+			<section>
+				<h2 class="inline">Lets see how phonegap works!</h1>
+				<div class="data">
+					<h3> 1. Build your app based in <mark>web standars</mark></h3>
+					<h3> 2. Wrap it with <mark>PhoneGap</mark></h3>
+					<h3> 3. Deploy it to <mark>Multiple Platforms</mark></h3>
+				</div>
+			</section>
+		</section>
+
+		<!-- Build it-->
+		<section id="build">
+			
+			<section>
+				<h1 class="inline">Build It</h1>
+				<h2 class="ghost inline">HTML5, Javascript, CSS3... </h2>
+			</section>
+			<section>
+				<h2> Let's see some code</h2>
+				<p> Phonegap hello world </p>
+				<pre>
+					<code data-language="html">
+&lt;!doctype html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;title&gt;Phonegap in tlp&lt;/title&gt;
+		&lt;script type="text/javascript" charset="utf-8" src="cordova-1.9.0.js"&gt;&lt;/script&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;h1&gt;Hello World&lt;/h1&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+					</code>
+				</pre>
+			</section>
+			<section>
+				<h2 class="inline">Ok...</h2>
+				<div class="image">
+					<img src="assets/images/wtf.jpeg">
+				</div>
+			</section>
+			<section>
+				<h1 class="inline big"> NOOOO!!!! </h1>
+			</section>
+			<section>
+				<h2 class="inline">PHONEGAP GIVE US COOL FEATURES</h2>
+				<div class="data">
+					<ul>
+						<li>Accelerometer</li>
+						<li>Camera</li>
+						<li>Capture</li>
+						<li>Connection</li>
+						<li>Contacts</li>
+						<li>Device</li>
+						<li>Events</li>
+						<li>File</li>
+						<li>Geolocation</li>
+						<li>Media</li>
+						<li>Notification</li>
+						<li>Storage</li>
+					</ul>
+				</div>
+			</section>
+			<section>
+				<h2 class="inline">JS API</h2>
+				<p> Cordova.js file give us access to different device features</p>
+				<pre>
+					<code data-language="javascript">
+	var networkState = navigator.network.connection.type;
+
+	var states = {};
+	states[Connection.UNKNOWN]  = 'Unknown connection';
+	states[Connection.ETHERNET] = 'Ethernet connection';
+	states[Connection.WIFI]     = 'WiFi connection';
+	states[Connection.CELL_2G]  = 'Cell 2G connection';
+	states[Connection.CELL_3G]  = 'Cell 3G connection';
+	states[Connection.CELL_4G]  = 'Cell 4G connection';
+	states[Connection.NONE]     = 'No network connection';
+
+	alert('Connection type: ' + states[networkState]);
+					</code>
+				</pre>
+			</section>
+		</section>
+
+		<!-- Wrap it-->
+		<section id="wrap">
+			<section>
+				<h1 class="inline">Wrap It</h1>
+				<h2 class="ghost inline">To create a native app</h2>
+			</section>
+			<section>
+				<h2 class="inline">We have two ways...</h2>
+				<h4 class="ghost"> to create native packages</h4>
+				<div class="column fifty">
+					ECLIPSE, XCODE etc
+					<p class="ghost">THE IDE WAY</p>
+				</div>
+				<div class="column fifty">
+					PHONEGAP BUILD
+					<p class="ghost">THE CLOUD WAY</p>
+				</div>
+			</section>
+		</section>
+
+		<!-- Deploy it -->
+		<section id="deploy">
+			<section>
+				<h1 class="inline">Deploy It</h1>
+				<h2 class="ghost inline">AND HAVE FUN IN YOUR MOBILE</h2>
+			</section>
+		</section>
+
+		<!-- DEMO -->
+		<section>
+			<h1 class="inline big">DEMO</h1>
+			<h3 class="inline percent100"><mark>PARTY TIME</mark></h3>
+		</section>
+
+		<section>
+			<h1 class="inline big">Thanks!</h1>
+			<h3 class="inline percent100"><mark>follow me in</mark><span class="icon social twitter"></span>adrianveracom</h3>
+		</section>
+	</div>
+	<script src="assets/javascripts/rainbow/rainbow.min.js"></script>
+	<script src="assets/javascripts/rainbow/language/generic.js"></script>
+	<script src="assets/javascripts/rainbow/language/javascript.js"></script>
+	<script src="assets/kinout/kinout-0.0.1.min.js"></script>
+	<script>
+		KINOUT.Core.init({ template: 'circle' });
+	</script>
+</body>
+</html>
